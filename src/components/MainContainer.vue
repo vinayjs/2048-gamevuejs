@@ -17,6 +17,9 @@
         </p>
         <button class="new-gane">NEW GAME</button>
       </div>
+      <div class="game-board">will add a seperate component, add space and color as in game board</div>
+      <span></span>
+      <hr>
    </div>
 </template>
 
