@@ -28,6 +28,14 @@
         </p>
       </div>
       <hr>
+      <p>
+        'You are playing the ' <b>orginal version of 2048.</b>
+        'Try out the offcial apps for '
+        <a href="">iOS</a>
+        'and'
+        <a href="">Android!</a>
+        'All other versions of this game are derivatives and should be used with caution.'
+      </p>
    </div>
 </template>
 
