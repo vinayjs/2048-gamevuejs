@@ -8,7 +8,15 @@
           <div class="best-container">BEST : '0'</div>
         </div>
       </div>
-    
+      <div class="below-heading">
+        <p class="gameintro">
+          "Join the titles, get to "
+          <b>2048!</b>
+          <br>
+          <a href="">How to play -></a>
+        </p>
+        <button class="new-gane">NEW GAME</button>
+      </div>
    </div>
 </template>
 
