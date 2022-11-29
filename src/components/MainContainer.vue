@@ -15,10 +15,18 @@
           <br>
           <a href="">How to play -></a>
         </p>
-        <button class="new-gane">NEW GAME</button>
+        <button class="new-game">NEW GAME</button>
       </div>
       <div class="game-board">will add a seperate component, add space and color as in game board</div>
       <span></span>
+      <div class="below-gameboard">
+        <p class="about-game">
+            HOW TO PLAY: Use your arrow keys to move the tiles. Tiles with the same number merge into one when they touch.
+           Add them up to reach 2048!
+           <br>
+           <a href="">Start Playing</a>
+        </p>
+      </div>
       <hr>
    </div>
 </template>
