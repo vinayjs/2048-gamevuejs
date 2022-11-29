@@ -36,6 +36,13 @@
         <a href="">Android!</a>
         'All other versions of this game are derivatives and should be used with caution.'
       </p>
+      <hr>
+      <p>
+        'Created by '
+        <a href="">Gabriele Circulli.</a>
+        'Based on '
+        <a href="">1024 by Veewo Studio</a>
+      </p>
    </div>
 </template>
 
@@ -69,5 +76,12 @@ export default {
   background-color:white;
   width: 20%;
 
+}
+.game-board {
+  margin: 10px;
+  width: 50%;
+  height: 50%;
+  padding: 10%;
+  background-color: blue;
 }
 </style>
