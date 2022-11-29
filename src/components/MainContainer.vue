@@ -1,7 +1,14 @@
 <template>
   
    <div class="main-container"> 
-    <h1>2048</h1>
+      <div class="heading">
+        <h1 class="title">2048</h1>
+        <div class="scores">
+          <div class="score-container">SCORE : '0'</div>
+          <div class="best-container">BEST : '0'</div>
+        </div>
+      </div>
+    
    </div>
 </template>
 
