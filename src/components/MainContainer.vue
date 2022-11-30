@@ -17,7 +17,7 @@
         </p>
         <button class="new-game">NEW GAME</button>
       </div>
-      <div class="game-board" id="game">will add a seperate component, add space and color as in game board</div>
+      <GameBoard />
       <span></span>
       <div id="gap"></div>
       <div class="below-gameboard">
@@ -48,8 +48,12 @@
 </template>
 
 <script>
+ import GameBoard  from  './GameBoard.vue'
 export default {
-
+  name: 'MainContainer',
+  components: {
+    GameBoard
+  }
 }
 </script>
 

@@ -1,7 +1,9 @@
 <template>
-  
    <div class="game-board"> 
-    
+    <div class="board">2</div>
+    <div class="board"></div>
+    <div class="board"></div>
+    <div class="board">4</div>
    </div>
 </template>
 
@@ -18,7 +20,14 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-body {
-  background-color: bisque;
-}
+ .game-board {
+  background-color: #bbada0;
+ }
+ .board {
+  background-color:#fff9f3;
+  width: 20%;
+  height: 20%;
+  margin: 8px;
+  float: left;
+ }
 </style>
