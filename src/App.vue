@@ -14,8 +14,10 @@ export default {
 </script>
 
 <style>
-body{
- background-color: rgb(133, 227, 227);
+body {
+  margin: 0;
+  padding: 0;
+  background: #faf8ef;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
