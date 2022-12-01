@@ -22,12 +22,17 @@ export default {
 <style scoped>
  .game-board {
   background-color: #bbada0;
+  width:500px ;
+  height:500px;
+  margin: 15px;
+  margin: 0;
+  border-radius: 5px;
  }
  .board {
   background-color:#fff9f3;
   width: 20%;
-  height: 20%;
-  margin: 8px;
+  height: 18%;
+  margin: 10px;
   float: left;
  }
 </style>
