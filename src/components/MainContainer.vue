@@ -13,12 +13,12 @@
         <p class="gameintro">
           Join the titles, get to <b>2048!</b>  
           <br>
-          <a href="#link-htp">How to play -></a>
+          <a id='htp' href="#link-htp">How to play -></a>
         </p>
         <button class="new-game">NEW GAME</button>
       </div>
       <GameBoard />
-      <span></span>
+      <!-- <span></span> -->
       <div id="gap"></div>
       <div class="below-gameboard">
         <p class="about-game" id="link-htp">
@@ -165,5 +165,10 @@ body {
   font-size: 15px;
   font-weight: 700; 
   margin-right: 5px;
+}
+
+#gap{
+  margin: 80%;
+  width: auto;
 }
 </style>
