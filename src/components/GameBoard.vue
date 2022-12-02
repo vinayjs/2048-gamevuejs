@@ -1,9 +1,17 @@
 <template>
    <div class="game-board"> 
-    <div class="board">2</div>
-    <div class="board"></div>
-    <div class="board"></div>
-    <div class="board">4</div>
+    <div class="board x2">2</div>
+    <div class="board">0</div>
+    <div class="board">0</div>
+    <div class="board">0</div>
+    <div class="board">0</div>
+    <div class="board">0</div>
+    <div class="board x8">8</div>
+    <div class="board">0</div>
+    <div class="board">0</div>
+    <div class="board">0</div>
+    <div class="board x4">4</div>
+    <div class="board">0</div>
    </div>
 </template>
 
@@ -14,6 +22,7 @@ export default {
    }
  },
  methods:{
+  
  }
 }
 </script>
@@ -25,14 +34,26 @@ export default {
   width:500px ;
   height:500px;
   margin: 15px;
-  margin: 0;
   border-radius: 5px;
  }
  .board {
   background-color:#fff9f3;
   width: 20%;
-  height: 18%;
+  height: 20%;
   margin: 10px;
+  position: relative;
   float: left;
+  text-align: center;
+ }
+ .x2 {
+  background-color: yellow;
+ }
+
+ .x4 {
+  background-color: rgb(222, 156, 238);
+ }
+
+ .x8 {
+  background-color: rgb(158, 237, 146);
  }
 </style>
