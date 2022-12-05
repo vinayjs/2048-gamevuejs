@@ -19,14 +19,15 @@ export default {
 body {
   margin: 0;
   padding: 0;
-  /* background: #faf8ef; */
+  background: #faf8ef;
 }
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  /* font-family: Helvetica, Arial, sans-serif; */
+  /* font-family: "Clear Sans";  */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: left;
-  /* color: #2c3e50; */
+  color: #2c3e50;
   margin-top: 60px;
 }
 </style>

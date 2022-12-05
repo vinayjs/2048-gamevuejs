@@ -60,103 +60,101 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 body {
- margin: 0;
- padding: 0;
- /* background: #faf8ef; */
+  margin: 0;
+  padding: 0;
 }
-
+ 
 .main-container {
- /* background: #faf8ef; */
- width: 500px;
- font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif; 
- font-size: 18px;
- margin: 35px  auto 0 auto;
+  width: 500px;
+  font-family:  Arial; 
+  font-size: 18px;
+  margin: 35px  auto 0 auto;
 }
 .heading {
- display: flex;
-  width: 500px; 
- position: relative;
+  display: flex;
+   width: 500px; 
+  position: relative;
 }
 .heading::after{
-content: '';
-display: block;
-clear: both;
+ content: '';
+ display: block;
+ clear: both;
 }
 .title{ 
- color: #776e65;
- font-size: 80px;
- margin: 0;
- letter-spacing: 2px;
- font-weight: 700;
-}
+  color: #776e65;
+  font-size: 80px;
+  margin: 0;
+  letter-spacing: 2px;
+  font-weight: 700;
+ }
 .scores{
- display:flex;
- position:absolute;
- top: 0;
- font-size: 13px;
- right:0px; 
- font-weight: bold;
-  text-align: center;
-  padding: 5px 10px ;
+  display:flex;
+  position:absolute;
+  top: 0;
+  font-size: 13px;
+  right:0px; 
+  font-weight: bold;
+   text-align: center;
+   padding: 5px 10px ;
 } 
 .score-container{
- background: #bbada0 ;
- color: #eee4da;
- width: 100%;
- border-radius: 3px;
- display:block;
- padding: 5px 10px ;
- margin-right: 6px;
- 
- align-items: center;
+  background: #bbada0 ;
+  color: #eee4da;
+  width: 100%;
+  border-radius: 3px;
+  display:block;
+  padding: 5px 10px ;
+  margin-right: 6px;
+  
+  align-items: center;
 }
 .best-container {
- background: #bbada0 ;
- color:#eee4da;
- display: block;
- border-radius: 3px;
- padding:5px 10px;
- margin-right: 5px;
+  background: #bbada0 ;
+  color:#eee4da;
+  display: block;
+  border-radius: 3px;
+  padding:5px 10px;
+  margin-right: 5px;
 }
-
+ 
 #value1{
- color: white;
- font-size: 25px;
- font-weight: bold;
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
 } 
 #value2{
- color: white;
- font-size: 25px;
- font-weight: bold;
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
 }
 .below-heading {
- display:flex;
- width: 100%;
- justify-content: space-between;
- align-items: center;
- margin-bottom: 15px;
+  display:flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
 }
 .gameintro {
- color: #776e65;
- justify-content: space-between;
+  color: #776e65;
+  justify-content: space-between;
 }
 #htp {
-  color: #776e65;
- font-weight: 700;
- font-size: 15px; 
+   color: #776e65;
+  font-weight: 700;
+  font-size: 15px; 
 }
 .new-game {
- background: #8f7a66;
- border: none;
- padding: 10px;
- border-radius: 5px;
- color: #f9f6f2;
- font-size: 15px;
- font-weight: 700; 
- margin-right: 5px;
+  background: #8f7a66;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  color: #f9f6f2;
+  font-size: 15px;
+  font-weight: 700; 
+  margin-right: 5px;
 }
 #gap{
- margin: 80%;
- width: auto;
+  margin: 80%;
+  width: auto;
 }
 </style>
