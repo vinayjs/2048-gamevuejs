@@ -1,7 +1,7 @@
 <template>
   <!-- <div :class="'color' + number" class="cell">{{ number || '' }}</div> -->
+    <div class="cell">{{value}}</div>
 
-<div class="cell">{{value}}</div>
 </template>
 <script>
 export default {
@@ -10,7 +10,6 @@ export default {
 props: {
     value: {
       type: Number,
-      required: true
     }
   }
 };

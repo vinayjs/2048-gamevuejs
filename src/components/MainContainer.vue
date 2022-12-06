@@ -53,8 +53,45 @@ export default {
  name: 'MainContainer',
  components: {
    GameBoard
- }
+ },
+ data() {
+    return {
+    };
+  },
+  methods: {
+    leftMove(){
+      for (let i = this.cellList.length - 1; i >= 0; i--) {
+        if (
+          this.cellList[i] !== this.cellList[i - 1] &&
+          this.cellList[i - 1] === 0
+        ) {
+          [this.cellList[i - 1], this.cellList[i]] = [
+            this.cellList[i],
+            this.cellList[i - 1]
+          ];
+        }
+        if (
+          this.cellList[i] === this.cellList[i - 1] &&
+          this.cellList[i - 1] !== 0
+        ) {
+          this.cellList[i - 1] = this.cellList[i] + this.cellList[i - 1];
+          this.cellList[i] = 0;
+          break;
+        }
+      }
+      return this.cellList;
+    },
+   shuffle(){
+    for (let i = this.cellList.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [this.cellList[i], this.cellList[j]] = [this.cellList[j], this.cellList[i]];
+      }
+      return this.cellList;
+     },
+  
+  }
 }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

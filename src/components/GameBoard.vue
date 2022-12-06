@@ -1,87 +1,63 @@
 <template>
-      <!-- <div v-bind:key="cell" :number="cell" v-for="cell in cells">{{ number || ''}}</div> -->
+  <!-- <div v-bind:key="cell" :number="cell" v-for="cell in cells">{{ number || ''}}</div> -->
 
-    <section class="game-board">
-        <GameCell v-for="(cell, index) in cellList"
+  <section class="game-board">
+    <GameCell
+      v-for="(cell, index) in cellList"
       :key="`cell-${index}`"
-      :value="cell"></GameCell>
-    </section>
-   
-
-  </template>
+      :value="cell"
+      @keydown:left="leftMove"
+    ></GameCell>
+  </section>
+</template>
    
    <script>
-    import GameCell from './GameCell.vue';
-  export default {
-    name:'GameBoard',
-    components: {
-        GameCell
+import GameCell from "./GameCell.vue";
+// import {useStore} from 'vuex'
+export default {
+  name: "GameBoard",
+  components: {
+    GameCell
+  },
+  data() {
+    return {
+      cellList: [0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0]
+    };
+  },
+  methods: {
+    leftMove(){
+      for (let i = this.cellList.length - 1; i >= 0; i--) {
+        if (
+          this.cellList[i] !== this.cellList[i - 1] &&
+          this.cellList[i - 1] === 0
+        ) {
+          [this.cellList[i - 1], this.cellList[i]] = [
+            this.cellList[i],
+            this.cellList[i - 1]
+          ];
+        }
+        if (
+          this.cellList[i] === this.cellList[i - 1] &&
+          this.cellList[i - 1] !== 0
+        ) {
+          this.cellList[i - 1] = this.cellList[i] + this.cellList[i - 1];
+          this.cellList[i] = 0;
+          break;
+        }
+      }
+      return this.cellList;
     },
-    setup(){
-       const cellList = [
-        0, 0, 0, 2,
-        0, 0, 0, 0,
-        0, 0, 2, 0,
-        0, 0, 0, 0
-        ]
-       const shuffle = (arr) => {
-        for (let i = arr.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [arr[i], arr[j]] = [arr[j], arr[i]];
-            }
-            return arr;
-            }
-        shuffle(cellList)
-       return {
-        cellList
-       }
-
-        },
-    methods: {
-       init(arr) {
-             this.suffle(arr);
-        },
-        shuffle(arr) {
-            for (let i = arr.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [arr[i], arr[j]] = [arr[j], arr[i]];
-            }
-            return arr;
-        },
-        addCells() {
-            let emptyCells = [];
-            this.cells.forEach((cell, index) => {
-                if (cell === 0) {
-                    emptyCells.push(index);
-                }
-            });
-            if (emptyCells.length > 0) {
-                let index = this.shuffle(emptyCells)[0];
-                this.cells[index] = 2;
-            }
-            else {
-                let turns = false;
-                for (let i = 0; i < 16; i++) {
-                    if (this.checkTurns(i)) {
-                        turns = true;
-                        break;
-                    }
-                }
-                if (!turns)
-                    alert("Game Over!");
-            }
-        },
-        checkTurns(i) {
-            let v = this.cells[i];
-            return (v === this.cells[i + 1] ||
-                v === this.cells[i - 1] ||
-                v === this.cells[i + 4] ||
-                v === this.cells[i - 4]);
-        },
-    },
-
+   shuffle(){
+    for (let i = this.cellList.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [this.cellList[i], this.cellList[j]] = [this.cellList[j], this.cellList[i]];
+      }
+      return this.cellList;
+     },
+  
+  }
 };
-  </script>
+</script>
    
    <style scoped>
 .game-board {
@@ -91,17 +67,14 @@
   grid-column-gap: 25px;
   grid-row-gap: 25px;
   justify-content: center;
-  background-color: #BBADA0;
+  background-color: #bbada0;
   padding: 10px;
- }
- .cell {
-    border: 5px solid #ccc;
-    background-color: #EEE1C9;
-    font-weight: bolder;
-    padding: 35%;
-    font-size: 40px
-    
- }
-
- 
-  </style>
+}
+.cell {
+  border: 5px solid #ccc;
+  background-color: #eee1c9;
+  font-weight: bolder;
+  padding: 35%;
+  font-size: 40px;
+}
+</style>
