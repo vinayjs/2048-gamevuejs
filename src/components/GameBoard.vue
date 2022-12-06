@@ -6,7 +6,8 @@
       v-for="(cell, index) in cellList"
       :key="`cell-${index}`"
       :value="cell"
-      @keydown:left="leftMove"
+      v-model="cellList"
+      @keyup.left="leftMove"
     ></GameCell>
   </section>
 </template>
@@ -25,27 +26,28 @@ export default {
     };
   },
   methods: {
-    leftMove(){
-      for (let i = this.cellList.length - 1; i >= 0; i--) {
+    leftMove(cellList){
+      cellList = this.cellList
+      for (let i = cellList.length - 1; i >= 0; i--) {
         if (
-          this.cellList[i] !== this.cellList[i - 1] &&
-          this.cellList[i - 1] === 0
+          cellList[i] !== cellList[i - 1] &&
+          cellList[i - 1] === 0
         ) {
-          [this.cellList[i - 1], this.cellList[i]] = [
-            this.cellList[i],
-            this.cellList[i - 1]
+          [cellList[i - 1], cellList[i]] = [
+            cellList[i],
+            cellList[i - 1]
           ];
         }
         if (
-          this.cellList[i] === this.cellList[i - 1] &&
-          this.cellList[i - 1] !== 0
+          cellList[i] === cellList[i - 1] &&
+          cellList[i - 1] !== 0
         ) {
-          this.cellList[i - 1] = this.cellList[i] + this.cellList[i - 1];
-          this.cellList[i] = 0;
+          cellList[i - 1] = cellList[i] + cellList[i - 1];
+          cellList[i] = 0;
           break;
         }
       }
-      return this.cellList;
+      return cellList;
     },
    shuffle(){
     for (let i = this.cellList.length - 1; i > 0; i--) {
@@ -55,6 +57,10 @@ export default {
       return this.cellList;
      },
   
+  },
+  mounted() {
+    this.shuffle();
+    this.leftMove()
   }
 };
 </script>
