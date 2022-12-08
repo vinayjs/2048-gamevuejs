@@ -4,7 +4,7 @@
        <h1 class="title">2048</h1>
        <div class="scores">
          <div class="score-container">SCORE <br>
-           <span id="value1">0</span></div>
+           <span id="value1">{{score}}</span></div>
          <div class="best-container">BEST <br>
            <span id="value2">1104</span></div>
        </div>
@@ -54,40 +54,13 @@ export default {
  components: {
    GameBoard
  },
+ props :['score']
+ ,
  data() {
     return {
     };
   },
   methods: {
-    leftMove(){
-      for (let i = this.cellList.length - 1; i >= 0; i--) {
-        if (
-          this.cellList[i] !== this.cellList[i - 1] &&
-          this.cellList[i - 1] === 0
-        ) {
-          [this.cellList[i - 1], this.cellList[i]] = [
-            this.cellList[i],
-            this.cellList[i - 1]
-          ];
-        }
-        if (
-          this.cellList[i] === this.cellList[i - 1] &&
-          this.cellList[i - 1] !== 0
-        ) {
-          this.cellList[i - 1] = this.cellList[i] + this.cellList[i - 1];
-          this.cellList[i] = 0;
-          break;
-        }
-      }
-      return this.cellList;
-    },
-   shuffle(){
-    for (let i = this.cellList.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [this.cellList[i], this.cellList[j]] = [this.cellList[j], this.cellList[i]];
-      }
-      return this.cellList;
-     },
   
   }
 }

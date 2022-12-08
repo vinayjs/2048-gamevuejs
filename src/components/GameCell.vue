@@ -1,6 +1,6 @@
 <template>
   <!-- <div :class="'color' + number" class="cell">{{ number || '' }}</div> -->
-    <button class="cell">{{value}}</button>
+    <div class="cell">{{value}}</div>
 
 </template>
 <script>
