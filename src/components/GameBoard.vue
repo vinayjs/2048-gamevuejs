@@ -7,7 +7,7 @@
          <div class="score-container">SCORE <br>
            <span id="value1">{{score}}</span></div>
          <div class="best-container">BEST <br>
-           <span id="value2">1104</span></div>
+           <span id="value2">{{bestscore}}</span></div>
        </div>
      </div>
      <div class="below-heading">
@@ -23,7 +23,7 @@
       v-for="(cell, index) in cellList"
       :key="`cell-${index}`"
       :value="cell"
-      @keydown="onKeypress"
+      @keydown="upArrow"
       tabindex="0"
     ></GameCell>
     </section>
@@ -43,11 +43,12 @@ export default {
     return {
       cellList: [0, 2, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       score : 0,
+      bestscore: 1440
       
     };
   },
   mounted: function() {
-    document.addEventListener.call(window, "keydown", this.onKeypress, false);
+    document.addEventListener.call(window, "keydown", this.upArrow, false);
   },
   methods: {
     onKeypress(e) {
@@ -65,9 +66,9 @@ export default {
           case "ArrowDown":
             this.downArrow;
             break;
-          case "Space":
-            e.preventDefault();
-            break;
+          // case "Space":
+          //   e.preventDefault();
+          //   break;
           default: break;
         }
       }
@@ -83,6 +84,8 @@ export default {
         }
         if (arr[i] === arr[i - 1] && arr[i - 1] !== 0) {
           this.score += arr[i];
+          if (this.score > this.bestscore) {
+          this.bestscore = this.score }
           arr[i - 1] = arr[i] + arr[i - 1];
           arr[i] = 0;
           break;
@@ -100,6 +103,9 @@ export default {
       if (emptyCells.length > 0) {
         let index = this.shuffle(emptyCells)[0];
         cells[index] = 2;
+      }
+      if (emptyCells.length === 0) {
+        alert('GAME OVER')
       }
       return cells;
     },
@@ -148,6 +154,8 @@ export default {
         }
         if (arr[i] === arr[i + 1] && arr[i + 1] !== 0) {
           this.score += arr[i]
+          if (this.score > this.bestscore) {
+          this.bestscore = this.score }
           arr[i + 1] = arr[i] + arr[i + 1];
           arr[i] = 0;
           break;
