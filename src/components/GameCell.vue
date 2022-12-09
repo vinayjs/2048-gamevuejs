@@ -27,50 +27,38 @@ props: {
  }
  .color2 {
   background-color: yellow;
-  color: white;
+  color:#776e65;
  }
  .color4 {
-  background-color: rgb(222, 156, 238);
-  color: rgb(180, 97, 97);
+  color: rgb(220, 76, 76);
  }
- .x8 {
-  background-color: rgb(158, 237, 146);
-  color: white;
+ .color8 {
+    color: rgb(107, 52, 52);
  }
  
-.x16{
-    background-color: #f59575;
-    color: white;
+.color16{
+    color: #ca4c21;
 }
-.x32{
-    background-color: #f57c5f;
-    color: white;
+.color32{
+    color: #f57c5f;
 }
-.x64{
-    background-color: #f65d3b;
-    color: white;
+.color64{
+    color: #f65d3b;
 }
-.x128{
-    background-color: #edce71;
-    color: white;
+.color128{
+    color: #bd5311;
 }
-.x256{
-    background-color: #edcc63;
-    color: white;
+.color256{
+    color: #edcc63;
 }
-.x512{
-    background-color: #edc651;
-    color: white;
+.color512{
+    color: #edc651;
 }
-.x1024{
-    background-color: #eec744;
-    color: white;
+.color1024{
+    color: #eec744;
 }
-.x2048{
-    background-color: #ecc230;
-    color: white;
+.color2048{
+    color: #ecc230;
 }
-.color2{
-  background-color: rgb(167, 72, 48);
-}
+
 </style>

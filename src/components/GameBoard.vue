@@ -265,10 +265,12 @@ export default {
 .cell {
   border: 5px solid #ccc;
   background-color: #eee1c9;
-  font-weight: bolder;
+  font-weight: bold;
   width: auto;
-  padding: 20% 27%;
-  font-size: 38px;
+  align-items: center;
+  justify-content: center;
+  padding: 25px 25px;
+  font-size: 42px;
 }
 .heading {
   display: flex;
