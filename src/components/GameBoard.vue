@@ -42,7 +42,7 @@ export default {
 
   data() {
     return {
-      cellList: [0, 2, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      cellList: ['',  2, '',  2, '',  '',  '',  '',  '',  '',  '',  '',  '',  '',  '',  ''],
       score : 0,
       bestscore: 1440 
     };
@@ -71,20 +71,20 @@ export default {
       }
     },
     newGame(){
-      this.cellList= this.shuffle([0, 2, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+      this.cellList= this.shuffle(['',  2, '',  2, '',  '',  '',  '',  '',  '',  '',  '',  '',  '',  '',  ''])
       this.score =0
     },
     leftMove(arr) {
       for (let i = arr.length - 1; i >= 0; i--) {
-        if (arr[i] !== arr[i - 1] && arr[i - 1] === 0) {
+        if (arr[i] !== arr[i - 1] && arr[i - 1] === '') {
           [arr[i - 1], arr[i]] = [arr[i], arr[i - 1]];
         }
-        if (arr[i] === arr[i - 1] && arr[i - 1] !== 0) {
+        if (arr[i] === arr[i - 1] && arr[i - 1] !== '') {
           this.score += arr[i];
           if (this.score > this.bestscore) {
           this.bestscore = this.score }
           arr[i - 1] = arr[i] + arr[i - 1];
-          arr[i] = 0;
+          arr[i] = '';
           break;
         }
       }
@@ -93,7 +93,7 @@ export default {
     addCells(cells) {
       let emptyCells = [];
       cells.forEach((cell, index) => {
-        if (cell === 0) {
+        if (cell === '') {
           emptyCells.push(index);
         }
       });
@@ -142,16 +142,16 @@ export default {
     },
     rightMove(arr) {
       for (let i = 0; i < arr.length; i++) {
-        if (arr[i] !== arr[i + 1] && arr[i + 1] === 0) {
+        if (arr[i] !== arr[i + 1] && arr[i + 1] === '') {
           [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
           // console.log(arr)
         }
-        if (arr[i] === arr[i + 1] && arr[i + 1] !== 0) {
+        if (arr[i] === arr[i + 1] && arr[i + 1] !== '') {
           this.score += arr[i]
           if (this.score > this.bestscore) {
           this.bestscore = this.score }
           arr[i + 1] = arr[i] + arr[i + 1];
-          arr[i] = 0;
+          arr[i] = '';
           break;
         }
       }

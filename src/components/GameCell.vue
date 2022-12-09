@@ -1,5 +1,4 @@
 <template>
-  <!-- <div :class="'color' + number" class="cell">{{ number || '' }}</div> -->
     <div class="cell" :class="('color' + value)">{{value}}</div>
 
 </template>
@@ -27,7 +26,7 @@ props: {
  }
  .color2 {
   background-color: yellow;
-  color:#776e65;
+  color:#3c3835;
  }
  .color4 {
   color: rgb(220, 76, 76);
