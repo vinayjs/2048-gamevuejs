@@ -1,5 +1,4 @@
 <template>
-  <!-- <div v-bind:key="cell" :number="cell" v-for="cell in cells">{{ number || ''}}</div> -->
     <div id="play">
     <div class="heading">
        <h1 class="title">2048</h1>
@@ -23,7 +22,9 @@
       v-for="(cell, index) in cellList"
       :key="`cell-${index}`"
       :value="cell"
-      @keydown="upArrow"
+      :id="value"
+      v-model="classList"
+      @keydown="onKeydown(e)"
       tabindex="0"
     ></GameCell>
     </section>
@@ -43,33 +44,29 @@ export default {
     return {
       cellList: [0, 2, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       score : 0,
-      bestscore: 1440
-      
+      bestscore: 1440 
     };
   },
   mounted: function() {
-    document.addEventListener.call(window, "keydown", this.upArrow, false);
+    document.addEventListener.call(window, "keydown", this.onKeydown, false);
   },
   methods: {
-    onKeypress(e) {
-      if (e.key !== undefined) {
-        switch (e.code) {
+    onKeydown(event) {
+      event.preventDefault();
+      if (event.key !== undefined) {
+        switch (event.key) {
           case "ArrowLeft":
-            this.leftArrow;
+            this.leftArrow();
             break;
           case "ArrowUp":
-            this.upArrow;
+            this.upArrow();
             break;
           case "ArrowRight":
-            this.rightArrow;
+            this.rightArrow();
             break;
           case "ArrowDown":
-            this.downArrow;
+            this.downArrow();
             break;
-          // case "Space":
-          //   e.preventDefault();
-          //   break;
-          default: break;
         }
       }
     },
@@ -103,9 +100,6 @@ export default {
       if (emptyCells.length > 0) {
         let index = this.shuffle(emptyCells)[0];
         cells[index] = 2;
-      }
-      if (emptyCells.length === 0) {
-        alert('GAME OVER')
       }
       return cells;
     },
@@ -272,8 +266,9 @@ export default {
   border: 5px solid #ccc;
   background-color: #eee1c9;
   font-weight: bolder;
-  padding: 35%;
-  font-size: 40px;
+  width: auto;
+  padding: 20% 27%;
+  font-size: 38px;
 }
 .heading {
   display: flex;
@@ -286,7 +281,7 @@ export default {
  clear: both;
 }
 .title{ 
-  color: #776e65;
+  color: #59442e;
   font-size: 80px;
   margin: 0;
   letter-spacing: 2px;
@@ -304,7 +299,7 @@ export default {
 } 
 .score-container{
   background: #bbada0 ;
-  color: #eee4da;
+  color: white;
   width: 100%;
   border-radius: 3px;
   display:block;
@@ -315,7 +310,7 @@ export default {
 }
 .best-container {
   background: #bbada0 ;
-  color:#eee4da;
+  color:white;
   display: block;
   border-radius: 3px;
   padding:5px 10px;
@@ -340,11 +335,11 @@ export default {
   margin-bottom: 15px;
 }
 .gameintro {
-  color: #776e65;
+  color: #59442e;
   justify-content: space-between;
 }
 #htp {
-   color: #776e65;
+   color: #59442e;
   font-weight: 700;
   font-size: 15px; 
 }
@@ -353,7 +348,7 @@ export default {
   border: none;
   padding: 10px;
   border-radius: 5px;
-  color: #f9f6f2;
+  color: white;
   font-size: 15px;
   font-weight: 700; 
   margin-right: 5px;

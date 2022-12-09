@@ -1,6 +1,6 @@
 <template>
   <!-- <div :class="'color' + number" class="cell">{{ number || '' }}</div> -->
-    <div class="cell">{{value}}</div>
+    <div class="cell" :class="('color' + value)">{{value}}</div>
 
 </template>
 <script>
@@ -25,13 +25,13 @@ props: {
   float: left;
   text-align: center;
  }
- .x2 {
+ .color2 {
   background-color: yellow;
   color: white;
  }
- .x4 {
+ .color4 {
   background-color: rgb(222, 156, 238);
-  color: white;
+  color: rgb(180, 97, 97);
  }
  .x8 {
   background-color: rgb(158, 237, 146);

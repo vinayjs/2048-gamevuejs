@@ -5,28 +5,30 @@
      <div id="gap"></div>
      <div class="below-gameboard">
        <p class="about-game" id="link-htp">
-           HOW TO PLAY: Use your arrow keys to move the tiles. Tiles with the same number merge into one when they touch.
-          Add them up to reach 2048!
+          <strong>HOW TO PLAY:</strong> Use your <strong>arrow keys</strong> to move the tiles. Tiles with the same number <strong>merge into one</strong> when they touch.
+          Add them up to reach  <strong>2048!</strong>
           <br>
-          <a href="#htp">Start Playing</a>
+          <a id='stp' href="#htp">Start Playing</a>
        </p>
      </div>
      <hr>
-     <p>
+     <div class="instruction">
+     <p class="about-game">
        'You are playing the ' <b>orginal version of 2048.</b>
        'Try out the offcial apps for '
-       <a href="https://itunes.apple.com/us/app/2048-by-gabriele-cirulli/id868076805" target="_blank">iOS</a>
+       <a class='yrp' href="https://itunes.apple.com/us/app/2048-by-gabriele-cirulli/id868076805" target="_blank">iOS</a>
        'and'
-       <a href="https://play.google.com/store/apps/details?id=com.gabrielecirulli.app2048" target="_blank">Android!</a>
+       <a class="yrp" href="https://play.google.com/store/apps/details?id=com.gabrielecirulli.app2048" target="_blank">Android!</a>
        'All other versions of this game are derivatives and should be used with caution.'
      </p>
      <hr>
      <p>
        Created by 
-       <a href="http://gabrielecirulli.com" target="_blank">Gabriele Cirulli.</a>
+       <a class="yrp" href="http://gabrielecirulli.com" target="_blank">Gabriele Cirulli.</a>
        Based on 
-       <a href="https://itunes.apple.com/us/app/1024!/id823499224" target="_blank">1024 by Veewo Studio.</a>
+       <a class="yrp" href="https://itunes.apple.com/us/app/1024!/id823499224" target="_blank">1024 by Veewo Studio.</a>
      </p>
+    </div>
   </div>
 </template>
 
@@ -66,4 +68,27 @@ body {
   margin: 80%;
   width: auto;
 }
+
+.about-game {
+  font-size: 18px;
+  font-weight:500px;
+  color: #59442e;
+
+}
+
+.instruction{
+  color: #59442e;
+}
+
+#stp{
+  color: #59442e;
+  
+}
+.yrp{
+  color: #59442e;
+  font-weight: 500px ;
+  
+}
+
+
 </style>
