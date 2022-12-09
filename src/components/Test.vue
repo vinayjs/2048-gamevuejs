@@ -104,3 +104,89 @@ export default {
   font-size: 40px;
 }
 </style>
+
+
+
+
+
+<template>
+  <!-- <div v-bind:key="cell" :number="cell" v-for="cell in cells">{{ number || ''}}</div> -->
+
+  <section class="game-board">
+    <GameCell
+      v-for="(cell, index) in cellList"
+      :key="`cell-${index}`"
+      :value="cell"
+      @keydown="onKeydown"
+    ></GameCell>
+  </section>
+</template>
+
+<script >
+import GameCell from "./GameCell.vue";
+export default {
+  name: "GameBoard",
+  components: {
+    GameCell
+  },
+
+  data() {
+    return {
+      cellList: [0, 2, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    }
+  },
+  mounted: function() {
+    document.addEventListener.call(window, "keydown", this.onKeydown);
+  },
+  methods: {
+    onKeydown(e) {
+      if (e.key !== undefined) {
+        const pressedKey = e.key;
+        switch (pressedKey) {
+          case "ArrowLeft":
+            this.leftArrow;
+            break;
+          case "ArrowUp":
+            this.upArrow;
+            break;
+          case "ArrowRight":
+            this.rightArrow;
+            break;
+          case "ArrowDown":
+            this.downArrow;
+        }
+      }
+    },
+  
+///////////////////////////
+
+
+    // onKeydown(e) {
+
+    //   if(e.key === 'ArrowLeft'){
+    //    return  this.leftArrow
+    //   }
+    //   else if (e.key === 'ArrowRight'){
+    //      return this.rightArrow
+    //   }
+    //   else if (e.key === 'ArrowUp'){
+    //    return this.upArrow
+    //   }
+    //   else if (e.key === 'ArrowDown'){
+    //    return  this.downArrow
+    //   }
+    // },
+    // onkeydown(event){
+    //   if(event.keyCode === 37){
+    //     this.leftArrow
+    //   }
+    //   else if (event.keyCode === 39){
+    //     this.rightArrow
+    //   }
+    //   else if (event.keyCode === 38){
+    //     this.upArrow
+    //   }
+    //   else if (event.keyCode === 40){
+    //     this.downArrow
+    //   }
+    // },

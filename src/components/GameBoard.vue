@@ -1,14 +1,34 @@
 <template>
   <!-- <div v-bind:key="cell" :number="cell" v-for="cell in cells">{{ number || ''}}</div> -->
-
-  <section class="game-board">
+    <div id="play">
+    <div class="heading">
+       <h1 class="title">2048</h1>
+       <div class="scores">
+         <div class="score-container">SCORE <br>
+           <span id="value1">{{score}}</span></div>
+         <div class="best-container">BEST <br>
+           <span id="value2">1104</span></div>
+       </div>
+     </div>
+     <div class="below-heading">
+       <p class="gameintro">
+         Join the titles, get to <b>2048!</b>  
+         <br>
+         <a id='htp' href="#link-htp">How to play -></a>
+       </p>
+       <button class="new-game" @click="newGame">NEW GAME</button>
+     </div>
+     <section class="game-board">
     <GameCell
       v-for="(cell, index) in cellList"
       :key="`cell-${index}`"
       :value="cell"
-      @keydown='onKeydown'
+      @keydown="onKeypress"
+      tabindex="0"
     ></GameCell>
-  </section>
+    </section>
+  </div>
+
 </template>
    
 <script >
@@ -21,60 +41,41 @@ export default {
 
   data() {
     return {
-      cellList: [0, 2, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      cellList: [0, 2, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      score : 0,
+      
     };
   },
   mounted: function() {
-    document.addEventListener.call(window, "keydown", this.onKeydown);
+    document.addEventListener.call(window, "keydown", this.onKeypress, false);
   },
   methods: {
-    onKeydown(event) {
-      if (event.key !== undefined) {
-        const pressedKey = event.key;
-        switch (pressedKey) {
+    onKeypress(e) {
+      if (e.key !== undefined) {
+        switch (e.code) {
           case "ArrowLeft":
             this.leftArrow;
             break;
           case "ArrowUp":
-            this.upArrow
+            this.upArrow;
             break;
           case "ArrowRight":
             this.rightArrow;
             break;
           case "ArrowDown":
             this.downArrow;
+            break;
+          case "Space":
+            e.preventDefault();
+            break;
+          default: break;
         }
       }
     },
-    // onKeydown(e) {
-        
-    //   if(e.key === 'ArrowLeft'){
-    //    return  this.leftArrow
-    //   }
-    //   else if (e.key === 'ArrowRight'){
-    //      return this.rightArrow
-    //   }
-    //   else if (e.key === 'ArrowUp'){
-    //    return this.upArrow
-    //   }
-    //   else if (e.key === 'ArrowDown'){
-    //    return  this.downArrow
-    //   }
-    // },
-    // onkeydown(event){
-    //   if(event.keyCode === 37){
-    //     this.leftArrow
-    //   }
-    //   else if (event.keyCode === 39){
-    //     this.rightArrow
-    //   }
-    //   else if (event.keyCode === 38){
-    //     this.upArrow
-    //   }
-    //   else if (event.keyCode === 40){
-    //     this.downArrow
-    //   }
-    // },
+    newGame(){
+      this.cellList= this.shuffle([0, 2, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+      this.score =0
+    },
     leftMove(arr) {
       for (let i = arr.length - 1; i >= 0; i--) {
         if (arr[i] !== arr[i - 1] && arr[i - 1] === 0) {
@@ -146,6 +147,7 @@ export default {
           // console.log(arr)
         }
         if (arr[i] === arr[i + 1] && arr[i + 1] !== 0) {
+          this.score += arr[i]
           arr[i + 1] = arr[i] + arr[i + 1];
           arr[i] = 0;
           break;
@@ -239,6 +241,7 @@ export default {
           b.push(a[j][k]);
         }
       }
+      this.addCells(b)
       this.cellList = b;
       return this.cellList;
     }
@@ -264,4 +267,88 @@ export default {
   padding: 35%;
   font-size: 40px;
 }
+.heading {
+  display: flex;
+   width: 500px; 
+  position: relative;
+}
+.heading::after{
+ content: '';
+ display: block;
+ clear: both;
+}
+.title{ 
+  color: #776e65;
+  font-size: 80px;
+  margin: 0;
+  letter-spacing: 2px;
+  font-weight: 700;
+ }
+.scores{
+  display:flex;
+  position:absolute;
+  top: 0;
+  font-size: 13px;
+  right:0px; 
+  font-weight: bold;
+   text-align: center;
+   padding: 5px 10px ;
+} 
+.score-container{
+  background: #bbada0 ;
+  color: #eee4da;
+  width: 100%;
+  border-radius: 3px;
+  display:block;
+  padding: 5px 10px ;
+  margin-right: 6px;
+  
+  align-items: center;
+}
+.best-container {
+  background: #bbada0 ;
+  color:#eee4da;
+  display: block;
+  border-radius: 3px;
+  padding:5px 10px;
+  margin-right: 5px;
+}
+ 
+#value1{
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
+} 
+#value2{
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
+}
+.below-heading {
+  display:flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.gameintro {
+  color: #776e65;
+  justify-content: space-between;
+}
+#htp {
+   color: #776e65;
+  font-weight: 700;
+  font-size: 15px; 
+}
+.new-game {
+  background: #8f7a66;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  color: #f9f6f2;
+  font-size: 15px;
+  font-weight: 700; 
+  margin-right: 5px;
+}
+
 </style>

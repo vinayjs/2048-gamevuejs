@@ -12,6 +12,7 @@ props: {
       type: Number,
     }
   }
+
 };
 </script>
 <style>
@@ -68,5 +69,8 @@ props: {
 .x2048{
     background-color: #ecc230;
     color: white;
+}
+.color2{
+  background-color: rgb(167, 72, 48);
 }
 </style>
