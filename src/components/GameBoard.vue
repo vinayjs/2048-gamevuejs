@@ -81,24 +81,7 @@ export default {
       }
     },
     newGame() {
-      this.cellList = this.shuffle([
-        "",
-        2,
-        "",
-        2,
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
-      ]);
+      this.cellList = this.shuffle(["", 2, "", 2, "", "", "", "", "", "", "", "", "", "", "", ""]);
       this.score = 0;
     },
     addCells(cells) {
@@ -155,8 +138,13 @@ export default {
     addLeft(arr) {
       for (let i = 0; i < arr.length; i++) {
         if (arr[i] === arr[i + 1]) {
+          this.score = this.score + Number(arr[i])
+          // if (this.score > this.bestscore) {
+          //   this.bestscore = this.score;
+          // }
           arr[i] = arr[i] + arr[i + 1];
           arr[i + 1] = "";
+          
         }
       }
       return arr;
@@ -226,6 +214,7 @@ export default {
     addRight(arr) {
       for (let i = arr.length - 1; i >= 0; i--) {
         if (arr[i] === arr[i - 1]) {
+          this.score = this.score + Number(arr[i])
           arr[i] = arr[i] + arr[i - 1];
           arr[i - 1] = "";
         }
