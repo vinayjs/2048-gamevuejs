@@ -27,39 +27,49 @@ props: {
   text-align: center;
  }
  .color2 {
-  background-color: yellow;
-  color:#3c3835;
+  background-color: rgb(238, 238, 135);
+  color: rgb(61, 22, 22);
  }
  .color4 {
-  color: rgb(220, 76, 76);
+  background-color: rgb(232, 193, 242);
+  color: rgb(27, 13, 13);
  }
  .color8 {
-    color: rgb(107, 52, 52);
+  background-color: rgb(158, 237, 146);
+  color: white;
  }
  
 .color16{
-    color: #201647;
+    background-color: #f59575;
+    color: white;
 }
 .color32{
-    color: #f57c5f;
+    background-color: #f57c5f;
+    color: white;
 }
 .color64{
-    color: #f65d3b;
+    background-color: #f65d3b;
+    color: white;
 }
 .color128{
-    color: #bd5311;
+    background-color: #edce71;
+    color: white;
 }
 .color256{
-    color: #200403;
+    background-color: #edcc63;
+    color: white;
 }
 .color512{
-    color: #2c240b;
+    background-color: #edc651;
+    color: white;
 }
 .color1024{
-    color: #17113f;
+    background-color: #eec744;
+    color: white;
 }
 .color2048{
-    color: #480a14;
+    background-color: #ecc230;
+    color: white;
 }
 
 </style>
