@@ -22,7 +22,7 @@
         <br />
         <a id="htp" href="#link-htp">How to play -></a>
       </p>
-      <button class="new-game" @click="newGame">NEW GAME</button>
+      <button class="new-game" @click.prevent="newGame">NEW GAME</button>
     </div>
     <section class="game-board">
       <GameCell
@@ -169,7 +169,6 @@ export default {
       for (let i = 0; i < arr.length; i++) {
         if (arr[i] !== arr[i + 1] && arr[i + 1] === "") {
           [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
-          // console.log(arr)
         }
         if (arr[i] === arr[i + 1] && arr[i + 1] !== "") {
           this.score += arr[i];

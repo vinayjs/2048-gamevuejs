@@ -1,7 +1,9 @@
 <template>
+
     <div class="cell" :class="('color' + value)">{{value}}</div>
 
 </template>
+
 <script>
 export default {
   name: "GameCell",
@@ -36,7 +38,7 @@ props: {
  }
  
 .color16{
-    color: #ca4c21;
+    color: #201647;
 }
 .color32{
     color: #f57c5f;
@@ -48,16 +50,16 @@ props: {
     color: #bd5311;
 }
 .color256{
-    color: #edcc63;
+    color: #200403;
 }
 .color512{
-    color: #edc651;
+    color: #2c240b;
 }
 .color1024{
-    color: #eec744;
+    color: #17113f;
 }
 .color2048{
-    color: #ecc230;
+    color: #480a14;
 }
 
 </style>
