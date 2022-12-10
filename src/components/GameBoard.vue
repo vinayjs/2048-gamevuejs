@@ -102,31 +102,21 @@ export default {
       this.score = 0;
     },
     leftMove(arr) {
-      for (let i = arr.length - 1; i >= 0; i--) {
-        if (arr[i] !== arr[i - 1] && arr[i - 1] === "") {
-          [arr[i - 1], arr[i]] = [arr[i], arr[i - 1]];
-          if (i + 1 <= arr.length - 1 && arr[i + 1] !== "") {
-            [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
-          }
-        }
-        if (arr[i] === arr[i - 1] && arr[i - 1] !== "") {
-          this.score += arr[i];
-          if (this.score > this.bestscore) {
-            this.bestscore = this.score;
-          }
-          arr[i - 1] = arr[i] + arr[i - 1];
-          arr[i] = "";
-          if (i + 1 <= arr.length - 1 && arr[i + 1] !== "") {
-            [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
-          }
-          if (i - 2 >= 0 && arr[i - 2] === "") {
-            [arr[i - 2], arr[i - 1]] = [arr[i - 1], arr[i - 2]];
-          }
-          break;
-        }
+      let x = [];
+      let y = [];
+      let leftadd = this.addLeft(arr);
+      console.log(leftadd);
+      for (let i = 0; i < leftadd.length; i++) {
+        if (leftadd[i] !== "") {
+          x.push(leftadd[i]);
+        } else y.push(leftadd[i]);
       }
-      return arr;
+      for (let j = 0; j < y.length; j++) {
+        x.push(y[j]);
+      }
+      return x;
     },
+
     addCells(cells) {
       let emptyCells = [];
       cells.forEach((cell, index) => {
@@ -177,6 +167,15 @@ export default {
         } else x[3].push(arr[i]);
       }
       return x;
+    },
+    addLeft(arr) {
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === arr[i + 1]) {
+          arr[i] = arr[i] + arr[i + 1];
+          arr[i + 1] = "";
+        }
+      }
+      return arr;
     },
     leftArrow() {
       let arr = this.destructureArray(this.cellList);
