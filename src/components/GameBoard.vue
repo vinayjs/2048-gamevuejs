@@ -38,7 +38,7 @@
       <button @click="upArrow">U</button>
       <button @click="rightArrow">R</button>
       <button @click="downArrow">D</button>
-    </div> -->
+    </div>-->
   </div>
 </template>
    
@@ -81,15 +81,32 @@ export default {
       }
     },
     newGame() {
-      this.cellList = this.shuffle(["", 2, "", 2, "", "", "", "", "", "", "", "", "", "", "", ""]);
+      this.cellList = this.shuffle([
+        "",
+        2,
+        "",
+        2,
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]);
       this.score = 0;
     },
     leftMove(arr) {
       for (let i = arr.length - 1; i >= 0; i--) {
         if (arr[i] !== arr[i - 1] && arr[i - 1] === "") {
           [arr[i - 1], arr[i]] = [arr[i], arr[i - 1]];
-          if(i+1 <= arr.length-1 && arr[i+1] !== ""){
-           [arr[i],arr[i+1]] = [arr[i+1],arr[i]]
+          if (i + 1 <= arr.length - 1 && arr[i + 1] !== "") {
+            [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
           }
         }
         if (arr[i] === arr[i - 1] && arr[i - 1] !== "") {
@@ -99,11 +116,11 @@ export default {
           }
           arr[i - 1] = arr[i] + arr[i - 1];
           arr[i] = "";
-          if(i+1 <= arr.length-1 && arr[i+1] !== ""){
-           [arr[i],arr[i+1]] = [arr[i+1],arr[i]]
+          if (i + 1 <= arr.length - 1 && arr[i + 1] !== "") {
+            [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
           }
-          if(i-2 >= 0 && arr[i-2]===""){
-           [arr[i-2],arr[i-1]] = [arr[i-1],arr[i-2]]
+          if (i - 2 >= 0 && arr[i - 2] === "") {
+            [arr[i - 2], arr[i - 1]] = [arr[i - 1], arr[i - 2]];
           }
           break;
         }
@@ -182,8 +199,8 @@ export default {
       for (let i = 0; i < arr.length; i++) {
         if (arr[i] !== arr[i + 1] && arr[i + 1] === "") {
           [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
-          if(i-1 >= 0 && arr[i-1]!==""){
-           [arr[i-1],arr[i]] = [arr[i],arr[i-1]]
+          if (i - 1 >= 0 && arr[i - 1] !== "") {
+            [arr[i - 1], arr[i]] = [arr[i], arr[i - 1]];
           }
         }
         if (arr[i] === arr[i + 1] && arr[i + 1] !== "") {
@@ -193,8 +210,11 @@ export default {
           }
           arr[i + 1] = arr[i] + arr[i + 1];
           arr[i] = "";
-          if(i-1 >= 0 && arr[i-1]!==""){
-           [arr[i-1],arr[i]] = [arr[i],arr[i-1]]
+          if (i - 1 >= 0 && arr[i - 1] !== "") {
+            [arr[i - 1], arr[i]] = [arr[i], arr[i - 1]];
+          }
+          if (i + 2 <= arr.length && arr[i + 2] == "") {
+            [arr[i + 1], arr[i + 2]] = [arr[i + 2], arr[i + 1]];
           }
           break;
         }
