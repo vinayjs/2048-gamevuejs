@@ -317,10 +317,10 @@ export default {
   border: 5px solid #ccc;
   background-color: #eee1c9;
   font-weight: bold;
-  width: auto;
-  align-items: center;
+  display: flex;
   justify-content: center;
-  padding: 25px 25px;
+  align-items: center;
+  font-size: 3em;
   font-size: 42px;
 }
 .heading {
