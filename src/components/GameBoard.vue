@@ -102,6 +102,9 @@ export default {
           if(i+1 <= arr.length-1 && arr[i+1] !== ""){
            [arr[i],arr[i+1]] = [arr[i+1],arr[i]]
           }
+          if(i-2 >= 0 && arr[i-2]===""){
+           [arr[i-2],arr[i-1]] = [arr[i-1],arr[i-2]]
+          }
           break;
         }
       }
