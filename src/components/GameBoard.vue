@@ -30,11 +30,15 @@
         :key="`cell-${index}`"
         :value="cell"
         :id="value"
-        v-model="classList"
         @keydown="onKeydown(e)"
-        tabindex="0"
       ></GameCell>
     </section>
+    <!-- <div class="button" v-if='(screen.size > )'>
+      <button @click="leftArrow">L</button>
+      <button @click="upArrow">U</button>
+      <button @click="rightArrow">R</button>
+      <button @click="downArrow">D</button>
+    </div> -->
   </div>
 </template>
    
@@ -84,6 +88,9 @@ export default {
       for (let i = arr.length - 1; i >= 0; i--) {
         if (arr[i] !== arr[i - 1] && arr[i - 1] === "") {
           [arr[i - 1], arr[i]] = [arr[i], arr[i - 1]];
+          if(i-2 <= 0 && arr[i-2]===""){
+           [arr[i-1],arr[i]] = [arr[i],arr[i-1]]
+          }
         }
         if (arr[i] === arr[i - 1] && arr[i - 1] !== "") {
           this.score += arr[i];
@@ -169,6 +176,9 @@ export default {
       for (let i = 0; i < arr.length; i++) {
         if (arr[i] !== arr[i + 1] && arr[i + 1] === "") {
           [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
+          if(i+2 <= arr.length && arr[i+2]===""){
+           [arr[i+1],arr[i+2]] = [arr[i+2],arr[i+1]]
+          }
         }
         if (arr[i] === arr[i + 1] && arr[i + 1] !== "") {
           this.score += arr[i];
