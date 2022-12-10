@@ -314,7 +314,7 @@ export default {
   padding: 10px;
 }
 .cell {
-  border: 5px solid   #c4b5a8;;;
+  border: 5px solid  #baa898;;
   /* background-color: #eee1c9; */
   font-weight: bold;
   display: flex;
