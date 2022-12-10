@@ -101,22 +101,6 @@ export default {
       ]);
       this.score = 0;
     },
-    leftMove(arr) {
-      let x = [];
-      let y = [];
-      let leftadd = this.addLeft(arr);
-      console.log(leftadd);
-      for (let i = 0; i < leftadd.length; i++) {
-        if (leftadd[i] !== "") {
-          x.push(leftadd[i]);
-        } else y.push(leftadd[i]);
-      }
-      for (let j = 0; j < y.length; j++) {
-        x.push(y[j]);
-      }
-      return x;
-    },
-
     addCells(cells) {
       let emptyCells = [];
       cells.forEach((cell, index) => {
@@ -177,6 +161,21 @@ export default {
       }
       return arr;
     },
+    leftMove(arr) {
+      let x = [];
+      let y = [];
+      let leftadd = this.addLeft(arr);
+      console.log(leftadd);
+      for (let i = 0; i < leftadd.length; i++) {
+        if (leftadd[i] !== "") {
+          x.push(leftadd[i]);
+        } else y.push(leftadd[i]);
+      }
+      for (let j = 0; j < y.length; j++) {
+        x.push(y[j]);
+      }
+      return x;
+    },
     leftArrow() {
       let arr = this.destructureArray(this.cellList);
       let x = [];
@@ -195,30 +194,18 @@ export default {
       return this.cellList;
     },
     rightMove(arr) {
-      for (let i = 0; i < arr.length; i++) {
-        if (arr[i] !== arr[i + 1] && arr[i + 1] === "") {
-          [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
-          if (i - 1 >= 0 && arr[i - 1] !== "") {
-            [arr[i - 1], arr[i]] = [arr[i], arr[i - 1]];
-          }
-        }
-        if (arr[i] === arr[i + 1] && arr[i + 1] !== "") {
-          this.score += arr[i];
-          if (this.score > this.bestscore) {
-            this.bestscore = this.score;
-          }
-          arr[i + 1] = arr[i] + arr[i + 1];
-          arr[i] = "";
-          if (i - 1 >= 0 && arr[i - 1] !== "") {
-            [arr[i - 1], arr[i]] = [arr[i], arr[i - 1]];
-          }
-          if (i + 2 <= arr.length && arr[i + 2] == "") {
-            [arr[i + 1], arr[i + 2]] = [arr[i + 2], arr[i + 1]];
-          }
-          break;
-        }
+      let x = [];
+      let y = [];
+      let rightadd = this.addRight(arr);
+      for (let i = 0; i < rightadd.length; i++) {
+        if (rightadd[i] !== "") {
+          x.push(rightadd[i]);
+        } else y.push(rightadd[i]);
       }
-      return arr;
+      for (let j = 0; j < y.length; j++) {
+        x.unshift(y[j]);
+      }
+      return x;
     },
     rightArrow() {
       let arr = this.destructureArray(this.cellList);
@@ -235,6 +222,15 @@ export default {
       this.addCells(y);
       this.cellList = y;
       return this.cellList;
+    },
+    addRight(arr) {
+      for (let i = arr.length - 1; i >= 0; i--) {
+        if (arr[i] === arr[i - 1]) {
+          arr[i] = arr[i] + arr[i - 1];
+          arr[i - 1] = "";
+        }
+      }
+      return arr;
     },
     destructureUpDown(arr) {
       let x = [[], [], [], []];
