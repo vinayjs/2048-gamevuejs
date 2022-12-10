@@ -99,6 +99,9 @@ export default {
           }
           arr[i - 1] = arr[i] + arr[i - 1];
           arr[i] = "";
+          // if(i-2 >= 0 && arr[i-2]===""){
+          //  [arr[i-1],arr[i]] = [arr[i],arr[i-1]]
+          // }
           break;
         }
       }
@@ -179,6 +182,7 @@ export default {
           if(i+2 <= arr.length && arr[i+2]===""){
            [arr[i+1],arr[i+2]] = [arr[i+2],arr[i+1]]
           }
+
         }
         if (arr[i] === arr[i + 1] && arr[i + 1] !== "") {
           this.score += arr[i];
@@ -187,6 +191,9 @@ export default {
           }
           arr[i + 1] = arr[i] + arr[i + 1];
           arr[i] = "";
+          if(i+2 <= arr.length && arr[i+2]===""){
+           [arr[i+1],arr[i+2]] = [arr[i+2],arr[i+1]]
+          }
           break;
         }
       }
