@@ -139,9 +139,9 @@ export default {
       for (let i = 0; i < arr.length; i++) {
         if (arr[i] === arr[i + 1]) {
           this.score = this.score + Number(arr[i])
-          // if (this.score > this.bestscore) {
-          //   this.bestscore = this.score;
-          // }
+          if (this.score > this.bestscore) {
+            this.bestscore = this.score;
+          }
           arr[i] = arr[i] + arr[i + 1];
           arr[i + 1] = "";
           
@@ -215,6 +215,9 @@ export default {
       for (let i = arr.length - 1; i >= 0; i--) {
         if (arr[i] === arr[i - 1]) {
           this.score = this.score + Number(arr[i])
+          if (this.score > this.bestscore) {
+            this.bestscore = this.score;
+          }
           arr[i] = arr[i] + arr[i - 1];
           arr[i - 1] = "";
         }
