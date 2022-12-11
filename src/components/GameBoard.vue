@@ -33,12 +33,12 @@
         @keydown="onKeydown(e)"
       ></GameCell>
     </section>
-    <!-- <div class="button" v-if='(screen.size > )'>
-      <button @click="leftArrow">L</button>
-      <button @click="upArrow">U</button>
-      <button @click="rightArrow">R</button>
-      <button @click="downArrow">D</button>
-    </div>-->
+    <div class="button">
+      <button class="round" id="round-1" @click="leftArrow">L</button>
+      <button class="round" id="round-2"  @click="rightArrow">R</button>
+      <button class="round" id="round-3"  @click="upArrow">U</button>
+      <button class="round" id="round-4"  @click="downArrow">D</button>
+    </div>
   </div>
 </template>
    
@@ -405,5 +405,52 @@ export default {
   font-size: 15px;
   font-weight: 700;
   margin-right: 5px;
+}
+@media (max-width: 800px) {
+  .button {
+    /* background-color: #de3163; */
+     display: block;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 100px;
+    margin:0;
+    padding:1px 1px 1px 1px
+  }
+}
+  @media (min-width: 1180px) {
+  .button {
+    display: none;
+  }
+}
+
+#round-2 {
+  background-color:  #d5c6b8
+}
+
+#round-1 {
+  background-color:  #a58e78
+}
+
+#round-4 {
+  background-color:  #d5c6b8
+}
+
+#round-3 {
+  background-color:  #9f866e
+}
+@media (min-width: 280px) and (max-width: 1180px) {
+.round {
+  border-radius:100%;
+  height: 85%;
+  width:  19%;
+  margin: 12px  14px 12px 14px; ;
+  color: aliceblue;
+  font-weight: bolder;
+  font-size: 30px;
+  border: 4px solid rgba(242, 240, 215, 0.367);
+  /* background-color:  #d5c6b8; */
+
+}
 }
 </style>
