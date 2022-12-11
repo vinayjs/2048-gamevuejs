@@ -35,8 +35,8 @@
     </section>
     <div class="button">
       <button class="round" id="round-1" @click="leftArrow">L</button>
-      <button class="round" id="round-2"  @click="rightArrow">R</button>
-      <button class="round" id="round-3"  @click="upArrow">U</button>
+      <button class="round" id="round-2"  @click="upArrow">U</button>
+      <button class="round" id="round-3"  @click="rightArrow">R</button>
       <button class="round" id="round-4"  @click="downArrow">D</button>
     </div>
   </div>
