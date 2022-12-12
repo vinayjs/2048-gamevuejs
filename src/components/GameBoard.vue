@@ -34,7 +34,7 @@
       ></GameCell>
     </section>
     <div class="button">
-      <button class="round" id="round-1" @click="leftArrow">L</button>
+      <button class="round" id="round-1"  @click="leftArrow">L</button>
       <button class="round" id="round-2"  @click="upArrow">U</button>
       <button class="round" id="round-3"  @click="rightArrow">R</button>
       <button class="round" id="round-4"  @click="downArrow">D</button>
@@ -218,7 +218,7 @@ export default {
           if (this.score > this.bestscore) {
             this.bestscore = this.score;
           }
-          arr[i] = arr[i] + arr[i - 1];
+          arr[i] = arr[i - 1] + arr[i] ;
           arr[i - 1] = "";
         }
       }
@@ -236,21 +236,6 @@ export default {
         } else x[3].push(arr[i]);
       }
       return x;
-    },
-    addSubArray(cell) {
-      let arr = this.destructureArray(cell);
-      let x = [];
-      let y = [];
-      for (let i = 0; i < arr.length; i++) {
-        x.push(this.leftMove(arr[i]));
-      }
-      for (let j = 0; j < x.length; j++) {
-        for (let k = 0; k < x[j].length; k++) {
-          y.push(x[j][k]);
-        }
-      }
-      cell = y;
-      return cell;
     },
     downArrow() {
       let arr = this.destructureUpDown(this.cellList);
