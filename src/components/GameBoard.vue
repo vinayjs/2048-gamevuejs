@@ -82,13 +82,13 @@ export default {
           case "left":
             this.leftArrow();
             break;
-          case "up":
+          case "top":
             this.upArrow();
             break;
           case "right":
             this.rightArrow();
             break;
-          case "down":
+          case "bottom":
             this.downArrow();
             break;
         }
