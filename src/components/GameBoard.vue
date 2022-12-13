@@ -34,10 +34,10 @@
       ></GameCell>
     </section>
     <div class="button">
-      <button class="round" id="round-1"  @click="leftArrow">L</button>
-      <button class="round" id="round-2"  @click="upArrow">U</button>
-      <button class="round" id="round-3"  @click="rightArrow">R</button>
-      <button class="round" id="round-4"  @click="downArrow">D</button>
+      <button class="round" id="round-1" @click="leftArrow">L</button>
+      <button class="round" id="round-2" @click="upArrow">U</button>
+      <button class="round" id="round-3" @click="rightArrow">R</button>
+      <button class="round" id="round-4" @click="downArrow">D</button>
     </div>
   </div>
 </template>
@@ -81,7 +81,24 @@ export default {
       }
     },
     newGame() {
-      this.cellList = this.shuffle(["", 2, "", 2, "", "", "", "", "", "", "", "", "", "", "", ""]);
+      this.cellList = this.shuffle([
+        "",
+        2,
+        "",
+        2,
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]);
       this.score = 0;
     },
     addCells(cells) {
@@ -138,13 +155,12 @@ export default {
     addLeft(arr) {
       for (let i = 0; i < arr.length; i++) {
         if (arr[i] === arr[i + 1]) {
-          this.score = this.score + Number(arr[i])
+          this.score = this.score + Number(arr[i]);
           if (this.score > this.bestscore) {
             this.bestscore = this.score;
           }
           arr[i] = arr[i] + arr[i + 1];
           arr[i + 1] = "";
-          
         }
       }
       return arr;
@@ -152,12 +168,16 @@ export default {
     leftMove(arr) {
       let x = [];
       let y = [];
-      let leftadd = this.addLeft(arr);
-      console.log(leftadd);
-      for (let i = 0; i < leftadd.length; i++) {
-        if (leftadd[i] !== "") {
-          x.push(leftadd[i]);
-        } else y.push(leftadd[i]);
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i] !== "") {
+          x.push(arr[i]);
+        } else y.push(arr[i]);
+      }
+      this.addLeft(x);
+      for (let i = 0; i < x.length - 1; i++) {
+        if (x[i] === "" && i !== x.length - 1 && x[i + 1] !== x[i]) {
+          [x[i], x[i + 1]] = [x[i + 1], x[i]];
+        }
       }
       for (let j = 0; j < y.length; j++) {
         x.push(y[j]);
@@ -184,11 +204,16 @@ export default {
     rightMove(arr) {
       let x = [];
       let y = [];
-      let rightadd = this.addRight(arr);
-      for (let i = 0; i < rightadd.length; i++) {
-        if (rightadd[i] !== "") {
-          x.push(rightadd[i]);
-        } else y.push(rightadd[i]);
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i] !== "") {
+          x.push(arr[i]);
+        } else y.push(arr[i]);
+      }
+      this.addRight(x);
+      for (let i = x.length - 1; i >= 0; i--) {
+        if (x[i] === "" && i !== 0 && x[i - 1] !== x[i]) {
+          [x[i - 1], x[i]] = [x[i], x[i - 1]];
+        }
       }
       for (let j = 0; j < y.length; j++) {
         x.unshift(y[j]);
@@ -214,11 +239,11 @@ export default {
     addRight(arr) {
       for (let i = arr.length - 1; i >= 0; i--) {
         if (arr[i] === arr[i - 1]) {
-          this.score = this.score + Number(arr[i])
+          this.score = this.score + Number(arr[i]);
           if (this.score > this.bestscore) {
             this.bestscore = this.score;
           }
-          arr[i] = arr[i - 1] + arr[i] ;
+          arr[i] = arr[i - 1] + arr[i];
           arr[i - 1] = "";
         }
       }
@@ -299,7 +324,7 @@ export default {
   padding: 10px;
 }
 .cell {
-  border: 5px solid  #baa898;;
+  border: 5px solid #baa898;
   /* background-color: #eee1c9; */
   font-weight: bold;
   display: flex;
@@ -394,48 +419,47 @@ export default {
 @media (max-width: 800px) {
   .button {
     /* background-color: #de3163; */
-     display: block;
+    display: block;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     height: 100px;
-    margin:0;
-    padding:1px 1px 1px 1px
+    margin: 0;
+    padding: 1px 1px 1px 1px;
   }
 }
-  @media (min-width: 1180px) {
+@media (min-width: 1180px) {
   .button {
     display: none;
   }
 }
 
 #round-2 {
-  background-color:  #d5c6b8
+  background-color: #d5c6b8;
 }
 
 #round-1 {
-  background-color:  #a58e78
+  background-color: #a58e78;
 }
 
 #round-4 {
-  background-color:  #d5c6b8
+  background-color: #d5c6b8;
 }
 
 #round-3 {
-  background-color:  #9f866e
+  background-color: #9f866e;
 }
 @media (min-width: 280px) and (max-width: 1180px) {
-.round {
-  border-radius:100%;
-  height: 85%;
-  width:  19%;
-  margin: 12px  14px 12px 14px; ;
-  color: aliceblue;
-  font-weight: bolder;
-  font-size: 30px;
-  border: 4px solid rgba(242, 240, 215, 0.367);
-  /* background-color:  #d5c6b8; */
-
-}
+  .round {
+    border-radius: 100%;
+    height: 85%;
+    width: 19%;
+    margin: 12px 14px 12px 14px;
+    color: aliceblue;
+    font-weight: bolder;
+    font-size: 30px;
+    border: 4px solid rgba(242, 240, 215, 0.367);
+    /* background-color:  #d5c6b8; */
+  }
 }
 </style>
