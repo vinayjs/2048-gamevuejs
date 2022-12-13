@@ -39,6 +39,7 @@
    
 <script >
 import GameCell from "./GameCell.vue";
+import {destructureArray,destructureUpDown,shuffle} from '../methods.js'
 export default {
   name: "GameBoard",
   components: {
@@ -55,6 +56,7 @@ export default {
   mounted: function() {
     document.addEventListener.call(window, "keydown", this.onKeydown, false);
     document.addEventListener.call(window, "swipe", this.swipeHandler, false);
+  
   },
   methods: {
     onKeydown(event) {
@@ -95,7 +97,7 @@ export default {
       }
     },
     newGame() {
-      this.cellList = this.shuffle(["", 2, "", "", "", "", 2, "", "", "", "", "", "", "", "", ""]);
+      this.cellList = shuffle(["", 2, "", "", "", "", 2, "", "", "", "", "", "", "", "", ""]);
       this.score = 0;
     },
     addCells(cells) {
@@ -106,7 +108,7 @@ export default {
         }
       });
       if (emptyCells.length > 0) {
-        let index = this.shuffle(emptyCells)[0];
+        let index = shuffle(emptyCells)[0];
         cells[index] = 2;
       } else {
         let turns = false;
@@ -128,26 +130,6 @@ export default {
         v === this.cellList[i + 4] ||
         v === this.cellList[i - 4]
       );
-    },
-    shuffle(arr) {
-      for (let i = 0; i < arr.length; i++) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [arr[i], arr[j]] = [arr[j], arr[i]];
-      }
-      return arr;
-    },
-    destructureArray(arr) {
-      let x = [[], [], [], []];
-      for (let i = 0; i < arr.length; i++) {
-        if (i >= 0 && i <= 3) {
-          x[0].push(arr[i]);
-        } else if (i >= 4 && i <= 7) {
-          x[1].push(arr[i]);
-        } else if (i >= 8 && i <= 11) {
-          x[2].push(arr[i]);
-        } else x[3].push(arr[i]);
-      }
-      return x;
     },
     addLeft(arr) {
       for (let i = 0; i < arr.length; i++) {
@@ -182,7 +164,7 @@ export default {
       return x;
     },
     leftArrow() {
-      let arr = this.destructureArray(this.cellList);
+      let arr = destructureArray(this.cellList);
       let x = [];
       let y = [];
       for (let i = 0; i < arr.length; i++) {
@@ -218,7 +200,7 @@ export default {
       return x;
     },
     rightArrow() {
-      let arr = this.destructureArray(this.cellList);
+      let arr = destructureArray(this.cellList);
       let x = [];
       let y = [];
       for (let i = 0; i < arr.length; i++) {
@@ -246,21 +228,8 @@ export default {
       }
       return arr;
     },
-    destructureUpDown(arr) {
-      let x = [[], [], [], []];
-      for (let i = 0; i < arr.length; i++) {
-        if (i === 0 || i === 4 || i === 8 || i === 12) {
-          x[0].push(arr[i]);
-        } else if (i === 1 || i === 5 || i === 9 || i === 13) {
-          x[1].push(arr[i]);
-        } else if (i === 2 || i === 6 || i === 10 || i === 14) {
-          x[2].push(arr[i]);
-        } else x[3].push(arr[i]);
-      }
-      return x;
-    },
     downArrow() {
-      let arr = this.destructureUpDown(this.cellList);
+      let arr = destructureUpDown(this.cellList);
       let x = [];
       let y = [];
       for (let i = 0; i < arr.length; i++) {
@@ -271,7 +240,7 @@ export default {
           y.push(x[j][k]);
         }
       }
-      let a = this.destructureUpDown(y);
+      let a = destructureUpDown(y);
       let b = [];
       for (let j = 0; j < a.length; j++) {
         for (let k = 0; k < a[j].length; k++) {
@@ -283,7 +252,7 @@ export default {
       return this.cellList;
     },
     upArrow() {
-      let arr = this.destructureUpDown(this.cellList);
+      let arr = destructureUpDown(this.cellList);
       let x = [];
       let y = [];
       for (let i = 0; i < arr.length; i++) {
@@ -294,7 +263,7 @@ export default {
           y.push(x[j][k]);
         }
       }
-      let a = this.destructureUpDown(y);
+      let a = destructureUpDown(y);
       let b = [];
       for (let j = 0; j < a.length; j++) {
         for (let k = 0; k < a[j].length; k++) {
