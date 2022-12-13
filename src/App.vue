@@ -1,19 +1,16 @@
 <template>
-
-<MainContainer />
-
+  <MainContainer />
 </template>
 
 <script>
-import MainContainer from './components/MainContainer.vue'
+import MainContainer from "./components/MainContainer.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     MainContainer,
-
-  }
-}
+  },
+};
 </script>
 
 <style>
@@ -23,8 +20,6 @@ body {
   background: #faf8ef;
 }
 #app {
-  /* font-family: Helvetica, Arial, sans-serif; */
-  /* font-family: "Clear Sans";  */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: left;

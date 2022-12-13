@@ -6,12 +6,12 @@
         <div class="score-container">
           SCORE
           <br />
-          <span id="value1">{{score}}</span>
+          <span id="value1">{{ score }}</span>
         </div>
         <div class="best-container">
           BEST
           <br />
-          <span id="value2">{{bestscore}}</span>
+          <span id="value2">{{ bestscore }}</span>
         </div>
       </div>
     </div>
@@ -34,31 +34,43 @@
         v-touch:swipe="swipeHandler"
       ></GameCell>
     </section>
+    <div class="'button" v-if="console === true">
+      <button class="round" id="round-1" @click="leftArrow">L</button>
+      <button class="round" id="round-2" @click="upArrow">U</button>
+      <button class="round" id="round-3" @click="rightArrow">R</button>
+      <button class="round" id="round-4" @click="downArrow">D</button>
+    </div>
+    <div class="console">
+      <button id="console" @click="button">CONTROLS</button>
+    </div>
   </div>
 </template>
-   
-<script >
+
+<script>
 import GameCell from "./GameCell.vue";
-import {destructureArray,destructureUpDown,shuffle} from '../methods.js'
+import { destructureArray, destructureUpDown, shuffle } from "../methods.js";
 export default {
   name: "GameBoard",
   components: {
-    GameCell
+    GameCell,
   },
 
   data() {
     return {
       cellList: ["", 2, "", "", "", "", 2, "", "", "", "", "", "", "", "", ""],
       score: 0,
-      bestscore: 1440
+      bestscore: 1440,
+      console: false,
     };
   },
-  mounted: function() {
+  mounted: function () {
     document.addEventListener.call(window, "keydown", this.onKeydown, false);
     document.addEventListener.call(window, "swipe", this.swipeHandler, false);
-  
   },
   methods: {
+    button() {
+      this.console = !this.console;
+    },
     onKeydown(event) {
       event.preventDefault();
       if (event.key !== undefined) {
@@ -118,7 +130,7 @@ export default {
             break;
           }
         }
-        if (!turns) alert('Game Over!');
+        if (!turns) alert("Game Over!");
       }
       return cells;
     },
@@ -273,11 +285,11 @@ export default {
       this.addCells(b);
       this.cellList = b;
       return this.cellList;
-    }
-  }
+    },
+  },
 };
 </script>
-   
+
 <style scoped>
 .game-board {
   display: grid;
@@ -292,7 +304,6 @@ export default {
 }
 .cell {
   border: 5px solid #baa898;
-  /* background-color: #eee1c9; */
   font-weight: bold;
   display: flex;
   justify-content: center;
@@ -382,5 +393,68 @@ export default {
   font-size: 15px;
   font-weight: 700;
   margin-right: 5px;
+}
+@media (max-width: 800px) {
+  .button {
+    display: block;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 100px;
+    margin: 0;
+    padding: 1px 1px 1px 1px;
+  }
+  #console {
+    display: none;
+    display: block;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 100px;
+    margin: 0;
+    padding: 1px 1px 1px 1px;
+  }
+}
+@media (min-width: 1180px) {
+  .button {
+    display: none;
+  }
+  #console {
+    display: none;
+  }
+}
+#round-2 {
+  background-color: #d5c6b8;
+}
+#round-1 {
+  background-color: #a58e78;
+}
+#round-4 {
+  background-color: #d5c6b8;
+}
+#round-3 {
+  background-color: #9f866e;
+}
+@media (min-width: 280px) and (max-width: 1180px) {
+  .round {
+    border-radius: 100%;
+    height: 90px;
+    width: 90px;
+    margin: 12px 14px 12px 14px;
+    color: aliceblue;
+    font-weight: bolder;
+    font-size: 30px;
+    border: 4px solid rgba(242, 240, 215, 0.367);
+    /* background-color:  #d5c6b8; */
+  }
+}
+#console {
+  color: rgb(251, 251, 251);
+  font-weight: bold;
+  background-color: #c8b8a9;
+  margin-top: 20px;
+  border: 4px solid rgba(242, 240, 215, 0.367);
+  width: 100px;
+  height: 35px;
 }
 </style>

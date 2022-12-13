@@ -58,6 +58,12 @@ export default {
   font-size: 18px;
   margin: 35px  auto 0 auto;
 }
+@media (min-width: 280px) and (max-width: 1180px) {
+.main-container{
+  width: 490px;
+  margin-left: 10px;
+}
+}
 
 #gap{
   margin: 80%;
