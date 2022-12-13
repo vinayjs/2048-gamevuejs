@@ -77,7 +77,6 @@ export default {
       }
     },
     swipeHandler(event) {
-      event.preventDefault();
       if (event !== undefined) {
         switch (event) {
           case "left":
@@ -320,6 +319,7 @@ export default {
   justify-content: center;
   background-color: #bbada0;
   padding: 10px;
+  touch-action: none;
 }
 .cell {
   border: 5px solid #baa898;
