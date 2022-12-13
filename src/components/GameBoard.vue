@@ -54,7 +54,7 @@ export default {
   },
   mounted: function() {
     document.addEventListener.call(window, "keydown", this.onKeydown, false);
-    document.addEventListener.call(window, "swipe", this.swipeHandler);
+    document.addEventListener.call(window, "swipe", this.swipeHandler, false);
   },
   methods: {
     onKeydown(event) {
@@ -77,6 +77,7 @@ export default {
       }
     },
     swipeHandler(event) {
+      event.preventDefault();
       if (event !== undefined) {
         switch (event) {
           case "left":
