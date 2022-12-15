@@ -109,7 +109,24 @@ export default {
       }
     },
     newGame() {
-      this.cellList = shuffle(["", 2, "", "", "", "", 2, "", "", "", "", "", "", "", "", ""]);
+      this.cellList = shuffle([
+        "",
+        2,
+        "",
+        "",
+        "",
+        "",
+        2,
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+      ]);
       this.score = 0;
     },
     addCells(cells) {
