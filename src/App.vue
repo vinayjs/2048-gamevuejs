@@ -26,4 +26,9 @@ body {
   color: #2c3e50;
   margin-top: 60px;
 }
+@media (min-width: 280px) and (max-width: 800px) {
+  #app {
+    padding-left:6px;
+  }
+}
 </style>

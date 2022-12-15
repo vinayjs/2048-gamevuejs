@@ -77,7 +77,6 @@ export default {
 @media (min-width: 280px) and (max-width: 800px) {
   .main-container {
     width: 490px;
-    padding-left: 2px;
   }
 }
 
